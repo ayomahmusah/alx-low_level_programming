@@ -6,22 +6,12 @@
  * @size: input
  * Return: Always 0 (Success)
  */
-void print_diagsums(int *a, int size)
-{
-	int num1, num2, x;
-
-	num1 = 0;
-	num2 = 0;
-
-	for (x = 0; x < size; x++)
-	{
-		num1 = sum1 + a[x * size + x];
-	}
-
-	for (x = size - 1; x >= 0; x--)
-	{
-		num2 += a[x * size + (size - x - 1)];
-	}
-
-	printf("%d, %d\n", num1, num2);
+void print_diagsums(int *a, int size) {
+  int i, total1 = 0, total2 = 0;
+  for (i = 0; i < size * size; i += size + 1) {
+    total1 += a[i];
+    total2 += a[(i / (size - 1) + 1) * (size - 1)];
+  }
+  printf("Sum of diagonal 1: %d\n", total1);
+  printf("Sum of diagonal 2: %d\n", total2);
 }
