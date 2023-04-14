@@ -9,22 +9,20 @@
 * Return: pointer to the allocated memory.
 */
 void *_calloc(unsigned int nmemb, unsigned int size)
-{ 
-	char *ar;
-	unsigned int x;
+{
+   char *a;
+   unsigned int i;
 
-	if (nmemb == 0 || size == 0)
-		return (NULL);
 
-	ar = malloc(nmemb * size);
+   if (nmemb == 0 || size == 0)
+       return (NULL);
+   a = malloc(nmemb * size);
+   if (a == NULL)
+   {
+       return (NULL);
+   }
+   for (i = 0; i < (nmemb * size); i++)
+       a[i] = 0;
 
-	if (ar == NULL)
-	{
-		return (NULL);
-	}
-	for (x = 0; x < (nmemb * size); x++)
-		ar[x] = 0;
-
-	return (ar);
-
+   return (a);
 }
